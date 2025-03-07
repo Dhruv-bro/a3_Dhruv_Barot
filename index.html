@@ -74,9 +74,16 @@
         ReactDOM.render(<App />, document.getElementById('root'));
 
         <button onClick={() => setDeck(generateDeck())}>Reset</button>
+        /* const tossCard = () => {
+             if (pickedCard !== null) {
+                 setSelectedCards(selectedCards.filter((_, index) => index === pickedCard)); // BUG: Should be !== instead of ===
+                 setPickedCard(null);
+             }
+         };
+         */
         const tossCard = () => {
             if (pickedCard !== null) {
-                setSelectedCards(selectedCards.filter((_, index) => index === pickedCard)); // BUG: Should be !== instead of ===
+                setSelectedCards(selectedCards.filter((_, index) => index !== pickedCard)); // FIXED
                 setPickedCard(null);
             }
         };
