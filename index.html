@@ -87,8 +87,17 @@
                 setPickedCard(null);
             }
         };
+        const regroupCards = () => {
+    const shuffledCards = [...selectedCards].sort(() => Math.random() - 0.5);
+    setSelectedCards(shuffledCards);
+};
+
 
     </script>
+    <div>
+        <button onClick={regroupCards}>Regroup</button>
+
+    </div>
 </body>
 
 </html>
