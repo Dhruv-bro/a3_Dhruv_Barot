@@ -27,6 +27,7 @@
                 </div>
             );
         };
+        
         const suits = ['♥', '♦', '♣', '♠'];
         const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
@@ -34,19 +35,42 @@
             return suits.flatMap(suit => values.map(value => ({ suit, value })));
         };
 
+        
         const App = () => {
             const [deck, setDeck] = React.useState(generateDeck());
+            const [selectedCards, setSelectedCards] = React.useState([]);
+
+            
+            const dealCards = (count) => {
+                if (deck.length < count) return;
+                const newDeck = [...deck];
+                const newCards = [];
+                for (let i = 0; i < count; i++) {
+                    const randomIndex = Math.floor(Math.random() * newDeck.length);
+                    newCards.push(newDeck.splice(randomIndex, 1)[0]);
+                }
+                setDeck(newDeck);
+                setSelectedCards(newCards);
+            };
 
             return (
                 <div>
                     <h1>React Card Game</h1>
-                    <div className="deck" onClick={() => alert('Deck Clicked')}>
-                        Deck
+                    <button onClick={() => dealCards(5)}>Deal 5</button>
+                    <button onClick={() => dealCards(7)}>Deal 7</button>
+                    <div className="deck">Deck</div>
+                    <div className="selected-cards">
+                        {selectedCards.map((card, index) => (
+                            <div key={index} className="card">
+                                {card.value}{card.suit}
+                            </div>
+                        ))}
                     </div>
                 </div>
             );
         };
 
+        
         ReactDOM.render(<App />, document.getElementById('root'));
 
 
