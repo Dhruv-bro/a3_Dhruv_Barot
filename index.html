@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,22 +12,45 @@
 </head>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
 </style>
+
 <body>
     <div id="root"></div>
     <script type="text/babel" src="script.js">
         const Card = ({ suit, value }) => {
-    return (
-        <div className="card">
-            {value}{suit}
-        </div>
-    );
-};
+            return (
+                <div className="card">
+                    {value}{suit}
+                </div>
+            );
+        };
+        const suits = ['♥', '♦', '♣', '♠'];
+        const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+        const generateDeck = () => {
+            return suits.flatMap(suit => values.map(value => ({ suit, value })));
+        };
+
+        const App = () => {
+            const [deck, setDeck] = React.useState(generateDeck());
+
+            return (
+                <div>
+                    <h1>React Card Game</h1>
+                    <div className="deck" onClick={() => alert('Deck Clicked')}>
+                        Deck
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
 
     </script>
 </body>
+
 </html>
