@@ -18,6 +18,15 @@
 </style>
 <body>
     <div id="root"></div>
-    <script type="text/babel" src="script.js"></script>
+    <script type="text/babel" src="script.js">
+        const Card = ({ suit, value }) => {
+    return (
+        <div className="card">
+            {value}{suit}
+        </div>
+    );
+};
+
+    </script>
 </body>
 </html>
