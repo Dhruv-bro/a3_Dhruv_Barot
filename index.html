@@ -88,14 +88,21 @@
             }
         };
         const regroupCards = () => {
-    const shuffledCards = [...selectedCards].sort(() => Math.random() - 0.5);
-    setSelectedCards(shuffledCards);
-};
+            const shuffledCards = [...selectedCards].sort(() => Math.random() - 0.5);
+            setSelectedCards(shuffledCards);
+        };
+        const addWildcard = () => {
+            const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+            const randomValue = values[Math.floor(Math.random() * values.length)];
+            const wildcard = { suit: randomSuit, value: randomValue };
+            setSelectedCards([...selectedCards, wildcard]);
+        };
 
 
     </script>
     <div>
         <button onClick={regroupCards}>Regroup</button>
+        <button onClick={addWildcard}>Wildcard</button>
 
     </div>
 </body>
