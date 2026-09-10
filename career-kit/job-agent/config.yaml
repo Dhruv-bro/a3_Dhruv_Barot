@@ -1,0 +1,91 @@
+# ── Candidate profile (used to personalize email drafts) ─────────────
+candidate:
+  name: Dhruv Barot
+  email: dhruvsbarot@gmail.com
+  phone: "[your phone]"
+  linkedin: "linkedin.com/in/[your-handle]"
+  github: "github.com/dhruv-bro"
+  location: "[City], Canada"
+  degree: "[B.Sc. Computer Science, University Name, 2026]"
+  headline: >-
+    recent CS graduate with hands-on AWS (EC2, VPC, S3, IAM, CloudWatch),
+    Linux, and networking experience, currently completing the AWS Cloud
+    Practitioner certification
+  proof_point: >-
+    I recently deployed a multi-tier app on AWS behind an ALB with a
+    public/private VPC layout, and I keep a Linux "break-and-fix" lab where
+    I document every incident like a support ticket
+
+# ── What counts as a match ───────────────────────────────────────────
+search:
+  title_keywords:            # a job matches if its title contains ANY of these
+    - cloud support
+    - technical support engineer
+    - support engineer
+    - technical solutions engineer
+    - technical services engineer
+    - support associate
+    - support specialist
+    - support analyst
+  entry_level_signals:       # boosts score; also matched in title
+    - associate
+    - junior
+    - entry
+    - new grad
+    - graduate
+    - early career
+    - " i "                  # "Engineer I"
+    - " 1"
+  exclude_keywords:          # skip if title contains any of these
+    - senior
+    - staff
+    - principal
+    - lead
+    - manager
+    - director
+    - " ii"
+    - " iii"
+  locations:                 # empty list = accept all; matching is substring, case-insensitive
+    - canada
+    - toronto
+    - vancouver
+    - waterloo
+    - montreal
+    - ottawa
+    - remote
+    - united states
+    - "usa"
+    - new york
+    - austin
+    - seattle
+    - dallas
+    - denver
+    - boston
+    - san antonio
+
+# ── Public job boards to scan (no API key needed) ────────────────────
+# Greenhouse: https://boards-api.greenhouse.io/v1/boards/<token>/jobs
+# Lever:      https://api.lever.co/v0/postings/<token>?mode=json
+# Unknown/renamed tokens are skipped gracefully — add or prune freely.
+boards:
+  greenhouse:
+    - cloudflare
+    - datadog
+    - digitalocean
+    - mongodb
+    - gitlab
+    - elastic
+    - hashicorp
+    - twilio
+    - pagerduty
+    - fastly
+    - okta
+  lever:
+    - shopify
+    - netlify
+    - grafana
+
+output:
+  csv: results/jobs.csv
+  outbox: outbox
+  max_emails: 20             # draft emails only for the top-N scored jobs
