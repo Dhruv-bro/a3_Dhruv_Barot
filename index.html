@@ -584,10 +584,10 @@ body.mode-letter .letter-view { display: block; }
 (() => {
   // ── Edit these two lines ───────────────────────────────
   const CONFIG = {
-    herName: "",       // her name, e.g. "Riya". Leave empty and the letter starts with "My love,"
+    herName: "Sydney", // her name. Leave empty and the letter starts with "My love,"
     fromName: "Dhruv",
   };
-  // Tip: you can also add her name to the end of the link, like  .../sorry/#Riya
+  // Tip: a name at the end of the link, like  .../#Sydney, overrides herName
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const wait = (ms) => (reduce ? Math.min(ms, 120) : ms);
